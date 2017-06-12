@@ -4,9 +4,9 @@ Gem::Specification.new do |s|
   s.date	= "2017-06-12"
   s.summary	= "Star Wars Api wrapper"
   s.description	= "A wrapper gem that handles interactions with the Star Wars Api"
-  s.authors	= ""
-  s.email	= ""
+  s.authors	= ["Riana Ferreira"]
+  s.email	= ["rianaferreira@gmail.com"]
   s.files	= ["lib/swapir.rb"]
-  s.homepage	= ""
+  s.homepage	= "https://github.com/RianaFerreira/swapir"
   s.license	= "MIT"
 end
