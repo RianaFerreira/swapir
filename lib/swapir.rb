@@ -5,6 +5,7 @@
 
 # external gem dependencies
 require "rest-client"
+require "json"
 require "byebug"
 
 # internal dependencies
@@ -17,15 +18,21 @@ class Swapir
   include ResourceApi
   include ResourceSearchApi
 
-  protected
+  def self.api_base_url
+    "http://swapi.co/api/"
+  end
 
-    def api_base_url
-      "http://swapi.co/api/"
-    end
+  def self.api_available?
+    # allow an exception to be raised if the request fails
+    # handle the raised exception
+    RestClient.get(api_base_url).code == 200
+  end
 
-    def api_available?
-      # allow an exception to be raised if the request fails
-      # handle the raised exception
-      RestClient.get(api_base_url).code == 200
-    end
+  def self.request(resource)
+    RestClient.get(api_base_url + resource)
+  end
+
+  def self.decode(response)
+    JSON.parse(response.body)["results"]
+  end
 end

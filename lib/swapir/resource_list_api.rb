@@ -1,25 +1,26 @@
+## Retrieve a collection of resources from the Star Wars Api
+#
 module ResourceListApi
-  def get_all_films
-    RestClient.get(api_base_url + "films")
+  def self.included(klass)
+    # 'included' callback adds the ClassMethods module methods
+    # as class methods to the calling class
+    klass.extend(ClassMethods)
   end
 
-  def get_all_people
-    RestClient.get(api_base_url + "people")
-  end
-
-  def get_all_planets
-    RestClient.get(api_base_url + "planets")
-  end
-
-  def get_all_species
-    RestClient.get(api_base_url + "species")
-  end
-
-  def get_all_starships
-    RestClient.get(api_base_url + "starships")
-  end
-
-  def get_all_vehicles
-    RestClient.get(api_base_url + "vehicles")
+  module ClassMethods
+    [
+      "films",
+      "people",
+      "planets",
+      "species",
+      "starships",
+      "vehicles"
+    ].each do |resource|
+      # define_method creates a closure which can hold references
+      # to large objects that will never be garbage collected
+      define_method("get_all_#{resource}") do
+        decode(request(resource))
+      end
+    end
   end
 end
