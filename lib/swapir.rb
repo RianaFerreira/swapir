@@ -19,6 +19,7 @@ class Swapir
   include ResourceSearchApi
 
   def self.api_base_url
+    # base Star Wars public api url
     "http://swapi.co/api/"
   end
 
@@ -29,10 +30,20 @@ class Swapir
   end
 
   def self.request(resource)
+    # call the Star Wars Api endpoint
+    # returns the api response
     RestClient.get(api_base_url + resource)
   end
 
   def self.decode(response)
+    # convert the Star Wars Api response body
+    # return the data in a Ruby Hash
+    JSON.parse(response.body)
+  end
+
+  def self.decode_results(response)
+    # convert the Star Wars Api response body collection
+    # return the data collection in a Ruby Hash
     JSON.parse(response.body)["results"]
   end
 end

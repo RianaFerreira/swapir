@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name	= "swapir"
-  s.version	= "0.0.1"
+  s.version	= "0.0.3"
   s.date	= "2017-06-12"
   s.summary	= "Star Wars Api wrapper"
   s.description	= "A wrapper gem that handles interactions with the Star Wars Api"
@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
     "lib/swapir.rb",
     "lib/swapir/resource_api.rb",
     "lib/swapir/resource_list_api.rb",
-    "lib/swapir/resource_search_api.rb"
+    "lib/swapir/resource_search_api.rb",
+    "lib/constants/swapi_resources.rb"
   ]
   s.homepage	= "https://github.com/RianaFerreira/swapir"
   s.license	= "MIT"
