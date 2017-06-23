@@ -26,8 +26,9 @@ Take a look at the [wiki] for more information.
 * [codeship blog] good module, bad module
 
 ## TODO list
-1. Do not expose request and decode methods in the public API
-2. Spec coverage
+1. Spec coverage
+2. Do not expose request and decode methods in the public API
+3. Improve request exception handling
 
 [rest-client]: https://github.com/rest-client/rest-client
 [json]: https://github.com/flori/json
