@@ -1,6 +1,6 @@
 ## Query the Star Wars Api for the details of a specific resource
 #
-require "constants/swapi_resources"
+require "swapir/swapi_resources"
 
 module ResourceApi
   def self.included(klass)

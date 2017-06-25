@@ -8,12 +8,17 @@ The swapir gem depends on these other gems for usage at runtime:
 * [rest-client] consumes the [Star Wars API]
 * [json] parses the [Star Wars Api] response
 
+## Installation
+If you use Rubygems you use this to install the latest Swapir version.
+
+    gem install swapir
+
 ## Usage
 To use swapir you can
 
     require 'swapir'
 
-Now you have access to a simple public interface that allows you to find more information about your favourite Star Wars characters, movies, planets, species, starships and vehicles.
+Now you have access to a simple `Swapir` public interface that allows you to find more information about your favourite Star Wars characters, movies, planets, species, starships and vehicles.
 
 Take a look at the [wiki] for more information.
 
