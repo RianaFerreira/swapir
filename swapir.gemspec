@@ -1,8 +1,9 @@
 $:.push File.expand_path("../lib", __FILE__)
+require "swapir/version"
 
 Gem::Specification.new do |s|
   s.name	= "swapir"
-  s.version	= "1.0.2"
+  s.version	= Swapir::VERSION
   s.platform = Gem::Platform::RUBY
   s.date	= "2017-06-25"
   s.summary	= "Star Wars Api wrapper"

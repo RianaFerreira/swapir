@@ -26,13 +26,22 @@ class Swapir
   def self.api_available?
     # allow an exception to be raised if the request fails
     # handle the raised exception
-    RestClient.get(api_base_url).code == 200
+    begin
+      RestClient.get(api_base_url).code == 200
+    rescue Errno::ECONNREFUSED => e
+      false
+    end
   end
 
   def self.request(resource)
-    # call the Star Wars Api endpoint
-    # returns the api response
-    RestClient.get(api_base_url + resource)
+    return "" unless self.api_available?
+    # call the Star Wars Api endpoint returns the api response
+    # and does not raise an exception when it fails
+    begin
+      RestClient.get(api_base_url + resource)
+    rescue RestClient::ExceptionWithResponse => e
+      e.response
+    end
   end
 
   def self.decode(response)
