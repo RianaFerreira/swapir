@@ -14,7 +14,7 @@ module ResourceListApi
       # define_method creates a closure which can hold references
       # to large objects that will never be garbage collected
       define_method("get_all_#{resource}") do
-        decode_results(request(resource))
+        paginated_request(resource)
       end
     end
   end

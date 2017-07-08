@@ -22,22 +22,19 @@ class SwapirTest < Minitest::Test
       @resource_name = "people"
     end
 
-    def test_swapi_request_for_a_collection_of_resources_succeeds
-      # skip
-      assert_equal 200, Swapir.request(@resource_name).code
-    end
-
     def test_swapi_response_body_contains_data
       # skip
-      refute_empty Swapir.request(@resource_name).body
+      refute_empty Swapir.paginated_request(@resource_name)
     end
 
-    def test_swapi_response_body_is_a_string_that_should_be_parsed
+    def test_swapi_returns_all_paginated_results
       # skip
-      assert_kind_of String, Swapir.request(@resource_name).body
+      assert_equal JSON.parse(Swapir.request(@resource_name).body)["count"],
+        Swapir.get_all_people.size
     end
 
     def test_swapi_response_is_parsed_into_an_array_of_results
+      # skip
       assert_kind_of Array, Swapir.get_all_people
     end
   end
@@ -64,6 +61,7 @@ class SwapirTest < Minitest::Test
       end
 
       def test_swapi_response_is_parsed_into_an_array_of_results
+        # skip
         assert_kind_of Array, Swapir.search_people("yoda")
       end
     end
@@ -89,6 +87,7 @@ class SwapirTest < Minitest::Test
       end
 
       def test_swapi_response_is_parsed_into_an_array_of_results
+        # skip
         assert_kind_of Array, Swapir.search_films("hope")
       end
     end
@@ -114,6 +113,7 @@ class SwapirTest < Minitest::Test
       end
 
       def test_swapi_response_is_parsed_into_an_array_of_results
+        # skip
         assert_kind_of Array, Swapir.search_starships("wing")
       end
     end
@@ -140,6 +140,7 @@ class SwapirTest < Minitest::Test
     end
 
     def test_swapi_response_is_parsed_into_an_array_of_results
+      # skip
       assert_kind_of Hash, Swapir.find_person(20)
     end
   end

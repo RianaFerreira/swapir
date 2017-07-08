@@ -28,15 +28,15 @@ class Swapir
     # handle the raised exception
     begin
       RestClient.get(api_base_url).code == 200
-    rescue Errno::ECONNREFUSED => e
+    rescue RestClient::ExceptionWithResponse => e
       false
     end
   end
 
   def self.request(resource)
-    return "" unless self.api_available?
-    # call the Star Wars Api endpoint returns the api response
-    # and does not raise an exception when it fails
+    return "Star Wars API is not available" unless self.api_available?
+    # rest-client returns the swapi response with status 200
+    # it does not raise an exception when the request fails
     begin
       RestClient.get(api_base_url + resource)
     rescue RestClient::ExceptionWithResponse => e
@@ -45,7 +45,7 @@ class Swapir
   end
 
   def self.decode(response)
-    # convert the Star Wars Api response body
+    # convert the Star Wars Api response body for a single resource
     # return the data in a Ruby Hash
     JSON.parse(response.body)
   end
@@ -54,5 +54,25 @@ class Swapir
     # convert the Star Wars Api response body collection
     # return the data collection in a Ruby Hash
     JSON.parse(response.body)["results"]
+  end
+
+  def self.paginated_request(resource)
+    next_url = api_base_url + resource
+    total_records = nil
+    collection = []
+
+    loop do
+      response = RestClient.get(next_url)
+      break if response.code != 200
+
+      total_records = decode(response)["count"]
+      data = decode_results(response)
+      collection += data
+
+      break if (data.empty? || collection.length >= total_records)
+      next_url = decode(response)["next"]
+    end
+
+    collection
   end
 end

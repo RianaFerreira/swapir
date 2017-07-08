@@ -7,6 +7,6 @@ gemspec :name => "swapir"
 gem "rest-client"
 gem "json"
 
-group :development do
+group :development, :test do
 	gem "byebug"
 end
