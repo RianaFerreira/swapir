@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.homepage	= "https://github.com/RianaFerreira/swapir"
   s.license	= "MIT"
 
-  s.add_development_dependency "byebug", "~> 9.0"
   s.add_runtime_dependency "json", "~> 2.0"
   s.add_runtime_dependency "rest-client", "~> 2.0"
 

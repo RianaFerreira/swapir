@@ -6,7 +6,6 @@
 # external gem dependencies
 require "rest-client"
 require "json"
-require "byebug"
 
 # internal dependencies
 require "swapir/resource_api"

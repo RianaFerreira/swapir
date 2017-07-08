@@ -25,8 +25,8 @@ If you use Rubygems, run this command manually from your shell to install the la
 ## Usage
 Once the gem is installed you have access to a simple `Swapir` public interface. This will help you to find more information about your favourite Star Wars characters, movies, planets, species, starships and vehicles.
 
-> Note: the Star Wars API returns paginated collections of 10 records
->       per request. Swapir collects all the paginated results and    >       returns the total number of records in the collection
+> Note: the Star Wars API returns paginated collections of 10 records per request.  
+> Swapir collects all the paginated results and returns the total number of records in the collection.
 
 Take a look at the [wiki] for more information.
 
